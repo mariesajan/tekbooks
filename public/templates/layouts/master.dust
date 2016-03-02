@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>TekBooks</title>
+
+        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+
+    </head>
+    <body>
+        <div class="row">
+            <div class="large-12 columns">
+            <h1> TekBooks</h1>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="large-12 columns">
+                <nav class="top-bar" data-topbar role="navigation">
+                    <section class="top-bar-section">
+                      <ul class="title-area">
+                        <li class="name">
+                          <h1><a href="/">Home</a></h1>
+                        </li>
+                        <li class="name">
+                          <h1><a href="/books/about">About</a></h1>
+                        </li>
+                        <li class="name">
+                          <h1><a href="/cart">Cart</a></h1>
+                        </li>
+                    </ul>
+                </section>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <p>before body in master</p>
+        {messages|s}
+            {+body /}
+    </div>
+
+
+    <footer>
+        <div class="row">
+            <div class="large-12 columns">
+                <p>TekBooks &copy; 2015|<a href="/manage">Manage</a></p>
+            </div>
+        </div>
+    </footer>
+        <script data-main="/js/app" src="/components/requirejs/require.js"></script>
+        <script data-main="/js/app" src="https://cdnjs.cloudflare.com/ajax/libs/foundation-essential/6.0.6/js/vendor/jquery.min.js"></script>
+        <script data-main="/js/app" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.js"></script>
+        <script data-main="/js/app" src="/js/main.js"></script>
+        <script>
+            $(document).foundation();
+        </script>
+    </body>
+</html>

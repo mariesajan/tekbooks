@@ -1,0 +1,68 @@
+{>"layouts/manage" /}
+
+{<body}
+    <div class="large-12 columns">
+        {@eq key=title value="Add Book"}
+            {! Template for Add Book !}
+            <h3>{.title}</h3>
+            <form method="post" action="/manage/addbook">
+                <div class="row">
+                  <div class="large-12 columns">
+                    Title:
+                    <input type="text" name="title">
+                    Author:
+                    <input type="text" name="author">
+                    Publisher:
+                    <input type="text" name="publisher">
+                    Price:
+                    <input type="text" name="price">
+                    Category:
+                    <select name="category">
+                        {#categories}
+                            <option value={.name}>{.name}</option>
+                        {/categories}
+                    </select>
+                    Description:
+                    <textarea type="text" name="description" rows="4"></textarea>
+                    Cover URL:
+                    <input type="text" name="cover">
+                    <input type="hidden" name="_csrf" value="{_csrf}">
+                    <input type="submit" class="button small" value="Submit">
+                 </div>
+             </form>
+        {:else}
+            {! Template for Edit Book !}
+            <h3>{.title}</h3>
+            <form method="post" action="/manage/editbook/{book._id}">
+                <div class="row">
+                  <div class="large-12 columns">
+                    Title:
+                    <input type="text" name="title" value="{book.title}">
+                    Author:
+                    <input type="text" name="author" value="{book.author}">
+                    Publisher:
+                    <input type="text" name="publisher" value="{book.publisher}">
+                    Price:
+                    <input type="text" name="price" value="{book.price}">
+                    Category:
+                    <select name="category">
+                        {#categories}
+                            {@eq key=name value=book.category}
+                                <option value="{.name}" selected>{.name}</option>
+                            {:else}
+                                <option value="{.name}">{.name}</option>
+                            {/eq}
+                        {/categories}
+                    </select>
+                    Description:
+                    <textarea type="text" name="description" rows="4">{book.description}</textarea>
+                    Cover URL:
+                    <input type="text" name="cover" value="{book.cover}">
+                    <input type="hidden" name="_csrf" value="{_csrf}">
+                    <input type="submit" class="button small" value="Submit">
+                 </div>
+             </form>
+        {/eq}
+
+     </div>
+{/body}

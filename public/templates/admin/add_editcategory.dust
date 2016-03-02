@@ -1,0 +1,29 @@
+{>"layouts/manage" /}
+
+{<body}
+    <div class="large-12 columns">
+        {@eq key=title value="Add Category"}
+            <h3>{.title}</h3>
+            <form method="post" action="/manage/addcategory">
+                <div class="row">
+                  <div class="large-12 columns">
+                    Category Name
+                    <input type="text" name="categoryname">
+                    <input type="hidden" name="_csrf" value="{_csrf}">
+                    <input type="submit" class="button small" value="Submit">
+                 </div>
+             </form>
+        {:else}
+            <h3>{.title}</h3>
+            <form method="post" action="/manage/editcategory/{category._id}">
+                <div class="row">
+                  <div class="large-12 columns">
+                    Category Name
+                    <input type="text" name="categoryname" value="{category.name}">
+                    <input type="hidden" name="_csrf" value="{_csrf}">
+                    <input type="submit" class="button small" value="Submit">
+                 </div>
+             </form>
+        {/eq}
+     </div>
+{/body}

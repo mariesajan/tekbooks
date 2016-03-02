@@ -1,0 +1,28 @@
+{>"layouts/manage" /}
+
+{<body}
+    <div class="large-12 columns">
+        <h3> Manage Categories</h3>
+        <a href="/manage/addcategory">Add Category</a>
+        <table>
+          <thead>
+            <tr>
+              <th width="300">ID</th>
+              <th width="200">Category Name</th>
+              <th width="150"></th>
+              <th width="150"></th>
+            </tr>
+          </thead>
+          {#categories}
+              <tbody>
+                <tr>
+                  <td>{._id}</td>
+                  <td>{.name}</td>
+                  <td><a href="/manage/editcategory/{._id}" class="button tiny">Edit</a></td>
+                  <td><a class="button alert tiny removeCategory" data-remove="{._id}">Delete</a></td>
+                </tr>
+             </tbody>
+         {/categories}
+        </table>
+    </div>
+{/body}

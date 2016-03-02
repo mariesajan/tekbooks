@@ -1,0 +1,23 @@
+.book,.buy{
+	text-align: center;
+}
+
+.buy a{
+	background-color:#e5c319;
+}
+.price span{
+	border-radius:50%;
+	background-color: #d0efe8;
+	border-style: solid;
+	border-color: #79ead0;
+
+}
+
+footer{
+	padding:100px;
+	text-align: center;
+}
+
+[class*="column"] + [class*="column"]:last-child {
+    float: left;
+}

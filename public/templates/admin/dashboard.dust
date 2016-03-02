@@ -1,0 +1,8 @@
+{>"layouts/manage" /}
+
+{<body}
+    <div class="large-12 columns">
+        <h2>Manager</h2>
+        <p> This is the manager dashboard</p>
+    </div>
+{/body}
