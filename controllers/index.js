@@ -9,11 +9,10 @@ module.exports = function(router) {
     router.get('/', function(req, res) {
         Book.find({}, function(err, books) {
             if (err)
-                console.log(err);
+                console.error(err);
 
             books.forEach(function(books) {
-                books.description = books.truncText(
-                    50);
+                books.description = books.truncText(50);
             });
             var model = {
                 books: books

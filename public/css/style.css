@@ -1,3 +1,8 @@
+.book_image{
+	width: 270px;
+	height: 300px;
+}
+
 .book,.buy{
 	text-align: center;
 }
@@ -14,7 +19,7 @@
 }
 
 footer{
-	padding:100px;
+	padding-top: 100px;
 	text-align: center;
 }
 

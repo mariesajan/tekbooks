@@ -5,9 +5,6 @@ var Book = require('../models/books');
 module.exports = function(router) {
 
     router.get('/', function(req, res) {
-        console.log(
-            'in the get of cart ..............................'
-        );
         var cart = req.session.cart || {};
         var total = 0;
         var displayCart = {
@@ -33,7 +30,7 @@ module.exports = function(router) {
             _id: req.params.bookid
         }, function(err, book) {
             if (err)
-                console.log(err);
+                console.error(err);
             if (cart[req.params.bookid]) {
                 cart[req.params.bookid].qty++;
             } else {

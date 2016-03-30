@@ -10,17 +10,12 @@ module.exports = function(router) {
     });
 
     router.get('/details/:id', function(req, res) {
-        console.log('in book deatils page ...................' +
-            req.params.id);
         Book.findOne({
             _id: req.params.id
         }, function(err, books) {
             if (err) {
-                console.log(err);
+                console.error(err);
             }
-            console.log('books found..........');
-            console.log(books);
-
             var model = {
                 books: books
             };

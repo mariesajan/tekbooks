@@ -20,8 +20,6 @@ options = {
          * Add any additional config setup or overrides here. `config` is an initialized
          * `confit` (https://github.com/krakenjs/confit/) configuration object.
          */
-        console.log('in options....................');
-        console.log(config.get('dbConfig'));
         db.config(config.get('dbConfig'));
         next(null, config);
     }
@@ -33,6 +31,9 @@ app.use(kraken(options));
 
 app.use(cookieParser('keyboard cat'));
 app.use(session({
+    secret: 'secret key',
+    resave : false,
+    saveUninitialized : true,
     cookie: {
         maxAge: 60000
     }
@@ -40,9 +41,7 @@ app.use(session({
 
 app.use(flash());
 app.use(function(req, res, next) {
-    console.log('in messages app.use........................');
-    res.locals.messages = require('express-messages')(req, res);
-    console.log(res.locals.messages);
+    res.locals.msg = req.flash();
     next();
 });
 

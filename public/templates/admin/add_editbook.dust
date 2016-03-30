@@ -5,25 +5,25 @@
         {@eq key=title value="Add Book"}
             {! Template for Add Book !}
             <h3>{.title}</h3>
-            <form method="post" action="/manage/addbook">
+            <form onsubmit="return validatePrice()" action="/manage/addbook" method="post">
                 <div class="row">
                   <div class="large-12 columns">
                     Title:
-                    <input type="text" name="title">
+                    <input type="text" name="title" required>
                     Author:
-                    <input type="text" name="author">
+                    <input type="text" name="author" required>
                     Publisher:
-                    <input type="text" name="publisher">
+                    <input type="text" name="publisher" required>
                     Price:
-                    <input type="text" name="price">
+                    <input type="text" name="price" id="price" required>
                     Category:
-                    <select name="category">
+                    <select name="category" required>
                         {#categories}
                             <option value={.name}>{.name}</option>
                         {/categories}
                     </select>
                     Description:
-                    <textarea type="text" name="description" rows="4"></textarea>
+                    <textarea type="text" name="description" rows="4" required></textarea>
                     Cover URL:
                     <input type="text" name="cover">
                     <input type="hidden" name="_csrf" value="{_csrf}">
@@ -33,17 +33,17 @@
         {:else}
             {! Template for Edit Book !}
             <h3>{.title}</h3>
-            <form method="post" action="/manage/editbook/{book._id}">
+            <form method="post" onsubmit="return validatePrice()" action="/manage/editbook/{book._id}">
                 <div class="row">
                   <div class="large-12 columns">
                     Title:
-                    <input type="text" name="title" value="{book.title}">
+                    <input type="text" name="title" value="{book.title}" required>
                     Author:
-                    <input type="text" name="author" value="{book.author}">
+                    <input type="text" name="author" value="{book.author}" required>
                     Publisher:
-                    <input type="text" name="publisher" value="{book.publisher}">
+                    <input type="text" name="publisher" value="{book.publisher}" required>
                     Price:
-                    <input type="text" name="price" value="{book.price}">
+                    <input type="text" name="price" id="price" value="{book.price}" required>
                     Category:
                     <select name="category">
                         {#categories}
@@ -55,7 +55,7 @@
                         {/categories}
                     </select>
                     Description:
-                    <textarea type="text" name="description" rows="4">{book.description}</textarea>
+                    <textarea type="text" name="description" rows="4" required>{book.description}</textarea>
                     Cover URL:
                     <input type="text" name="cover" value="{book.cover}">
                     <input type="hidden" name="_csrf" value="{_csrf}">
